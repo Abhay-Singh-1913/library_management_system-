@@ -49,25 +49,24 @@ public class View {
 		System.out.println("-------------------------------------------------");
 		System.out.println();
 		System.out.println();
-		
 		library.setPincode(libraryPincode);
 	}
 
 	public static void main(String[] args) {
 		do {
 			System.out.println();
-			System.out.println("***Welcome to "+library.getLibraryName()+"***");
-			System.out.println("________________________________");
-			System.out.println("|				MENU			  ");
+			System.out.println("***𝒘𝒆𝒍𝒄𝒐𝒎𝒆 to "+library.getLibraryName()+"***");
+			System.out.println(" ______________________________ ");
+			System.out.println("|         --- MENU ---         |");
 			System.out.println("|==============================|");
 			System.out.println("| Select Operation to Perform  |");
 			System.out.println("|------------------------------|");
-			System.out.println("| 1.Add Book					 |");
-			System.out.println("| 2.Remove Book				 |");
-			System.out.println("| 3.Update Book				 |");
-			System.out.println("| 4.Get book by name			 |");
-			System.out.println("| 5.Get all book				 |");
-			System.out.println("| 0.Exit						 |");
+			System.out.println("| 1.Add Book                   |");
+			System.out.println("| 2.Remove Book                |");
+			System.out.println("| 3.Update Book                |");
+			System.out.println("| 4.Get book by name           |");
+			System.out.println("| 5.Get all book               |");
+			System.out.println("| 0.Exit                       |");
 			System.out.println("|______________________________|");
 			
 			
