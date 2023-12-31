@@ -1,4 +1,5 @@
-# Library Management System using Java (Console Based)
+# Library Management System using Java 
+# (Console Based)
 
 ## Introduction
 This Library Management System efficiently maintains library records, reducing the time spent on administrative tasks. It empowers librarians to perform actions such as adding books, searching for books, removing books, updating book prices, and viewing all books.
