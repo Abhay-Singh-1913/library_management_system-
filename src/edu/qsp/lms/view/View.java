@@ -58,7 +58,7 @@ public class View {
 		final String white = "\u001b[37;1m";
 		final String green = "\u001b[32;1m";
 		final String reset = "\u001b[0m";
-		
+		boolean Flag = true;
 		do {
 			System.out.println("\u001b[33m");
 			System.out.println("***Welcome to "+library.getLibraryName()+"***");
@@ -73,10 +73,10 @@ public class View {
 			System.out.println("| 4.Get book by name			 |");
 			System.out.println("| 5.Get all book				 |");
 			System.out.println("| 0.Exit						 |");
-			System.out.println("|______________________________|");
+			System.out.println("|______________________________|"+reset);
 			
 			
-			System.out.println("-------------------------------------------------");
+			System.out.println(white+"-------------------------------------------------");
 			System.out.print("Enter Your Choice Here :- ");
 			int userChoice = myInput.nextInt();
 			myInput.nextLine();
@@ -89,6 +89,7 @@ public class View {
 				myInput.close();
 				System.out.println("---EXITED---");
 				System.exit(0);
+				Flag = false;
 				break;
 			case 1:
 				Book book1 = new Book();
@@ -96,83 +97,120 @@ public class View {
 				System.out.print("Enter Book name :->");
 				book1.setBookName(myInput.nextLine());
 				
-				
-				
 				System.out.println("-------------------------------------------------");
 				System.out.print("Enter book author :->");
 				book1.setBookAuthor(myInput.nextLine());
-				
 				
 				System.out.println("-------------------------------------------------");
 				System.out.print("Enter book price :->");
 				book1.setBookPrice(myInput.nextDouble());
 				myInput.nextLine();
 				
-				
 				System.out.println("-------------------------------------------------");
 				System.out.print("Enter Pulication :->");
 				book1.setPublication(myInput.nextLine());
 				System.out.println("-------------------------------------------------");
 				
-				
-				controller.addBook(book1);
+				if (controller.addBook(book1)) {
+					System.out.println(green+"-------------------------------------------------");
+					System.out.println("///////-----Book Added Successfully-----///////");
+					System.out.println("-------------------------------------------------"+reset);
+				} else {
+					System.out.println(red+"-------------------------------------------------");
+					System.out.println("///////-----Book failed to Add   --------///////");
+					System.out.println("-------------------------------------------------"+reset);
+				}
 				break;
 			case 2:
 				System.out.println("-------------------------------------------------");
 				System.out.print("Enter name of Book to be removed : ");
 				String bookToBeRemoveBook = myInput.nextLine();
-				
-				
 				System.out.println("-------------------------------------------------");
-				boolean verifyRemoveBook = controller.removeBook(bookToBeRemoveBook);
 				
-				if (verifyRemoveBook) {
-					System.out.println("-------------------------------------------------");
+				if (controller.removeBook(bookToBeRemoveBook)) {
+					System.out.println(green+"-------------------------------------------------");
 					System.out.println("///////-----Book removed Successfully-----///////");
-					System.out.println("-------------------------------------------------");
+					System.out.println("-------------------------------------------------"+reset);
 				} else {
-					System.out.println("-------------------------------------------------");
+					System.out.println(red+"-------------------------------------------------");
 					System.out.println("/////-----Book Does not Found in Library-----////");
-					System.out.println("-------------------------------------------------");
+					System.out.println("-------------------------------------------------"+reset);
 				}
 				break;
+				
 			case 3:
 				Book book3 = new Book();
+				System.out.println("-------------------------------------------------");
 				System.out.println("Enter name of book to update : ");
 				String bookToUpdate = myInput.nextLine();
+				
+				System.out.println("-------------------------------------------------");
 				book3.setBookName(bookToUpdate);
 				
+				System.out.println("-------------------------------------------------");
 				System.out.println("Enter the Update Price of Book : ");
 				double newPrice = myInput.nextDouble();
 				myInput.nextLine();
 				
+				System.out.println("-------------------------------------------------");
 				
 				if (controller.updateBookPriceByBookName(book3,newPrice)) {
-					System.out.println("Book Price Updated");
+					System.out.println(green+"-------------------------------------------------");
+					System.out.println("///////---Book Price Updated Successfully---///////");
+					System.out.println("-------------------------------------------------"+reset);
 				} else {
-					System.out.println("Book does not exit in Library");
+					System.out.println(red+"-------------------------------------------------");
+					System.out.println("/////-----Book Does not Found in Library-----////");
+					System.out.println("-------------------------------------------------"+reset);
+					System.out.println("Book Price Updated");
 				}
 
 				break;
 			case 4:
+				System.out.println("-------------------------------------------------");
 				System.out.println("Enter book name for search :->");
 				String bookToGet = myInput.nextLine();
+				System.out.println("-------------------------------------------------");
 				Book book = controller.searchBook(bookToGet);
 				
 				if (book != null) {
-					System.out.println(book);
+					System.out.println(green+"------------------------------------");
+					System.out.println("///////-----Book Details-----///////");
+					System.out.println("Book Name : "+book.getBookName());
+					System.out.println("Book Author : "+book.getBookAuthor());
+					System.out.println("Book Publication : "+book.getPublication());
+					System.out.println("Book Price : "+book.getBookPrice());
+					System.out.println("------------------------------------"+reset);
+					
 				} else {
-					System.out.println("Book does not exit in Library : ");
+					System.out.println(red+"-------------------------------------------------");
+					System.out.println("/////-----Book Does not Found in Library-----////");
+					System.out.println("-------------------------------------------------"+reset);
 				}
 				break;
 			case 5:
-				System.out.println(controller.getAllBooks());
+				List<Book> allBooks = controller.getAllBooks();
+				System.out.println(white+"------------------------------------");
+				System.out.println("///////-----Book Details-----///////");
+				for (Book booklist : allBooks) {
+					System.out.println("Book Name : "+booklist.getBookName());
+					System.out.println("Book Author : "+booklist.getBookAuthor());
+					System.out.println("Book Publication : "+booklist.getPublication());
+					System.out.println("Book Price : "+booklist.getBookPrice());
+					System.out.println("------------------------------------"+reset);
+					System.out.println();
+				}
+				System.out.println();
 				break;
 
 			default:
+				System.out.println(red+"-------------------------------------------------");
+				System.out.println("/////-----Enter Choice is not valid  -----////");
+				System.out.println("-------------------------------------------------"+reset);
 				break;
 			}
-		} while (true);
+		} while (Flag);
+		System.out.println(green+"--------Thank You For Using--------");
 
 	}
 }
