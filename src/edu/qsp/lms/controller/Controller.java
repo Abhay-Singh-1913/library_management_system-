@@ -10,13 +10,18 @@ public class Controller {
 
 	private Library library = new Library();
 
-	public void addBook(Book book) {
+	public boolean addBook(Book book) {
 		List<Book> books = library.getBooks();
-		if (books == null) {
-			books = new ArrayList<>();
+		if (books == null && book !=null) {
+			books = new ArrayList();
 			library.setBooks(books);
+			books.add(book);
+			return true;
+		}else if (book !=null) {
+			books.add(book);
+			return true;
 		}
-		books.add(book);
+		return false;
 	}
 
 	public Book searchBook(String bookName) {
