@@ -13,7 +13,7 @@ public class View {
 	static Controller controller = new Controller();
 	
 	static {
-		System.out.println();
+		System.out.println("\u001b[33m");
 		System.out.println();
 		System.out.print("██╗░░░░░██╗██████╗░██████╗░░█████╗░██████╗░██╗░░░██╗	");System.out.println("███╗░░░███╗░█████╗░███╗░░██╗░█████╗░░██████╗░███╗░░░███╗███████╗███╗░░██╗████████╗");
 		System.out.print("██║░░░░░██║██╔══██╗██╔══██╗██╔══██╗██╔══██╗╚██╗░██╔╝	");System.out.println("████╗░████║██╔══██╗████╗░██║██╔══██╗██╔════╝░████╗░████║██╔════╝████╗░██║╚══██╔══╝");
@@ -28,7 +28,7 @@ public class View {
 		System.out.println("	░╚═══██╗░░╚██╔╝░░░╚═══██╗░░░██║░░░██╔══╝░░██║╚██╔╝██║");
 		System.out.println("	██████╔╝░░░██║░░░██████╔╝░░░██║░░░███████╗██║░╚═╝░██║");
 		System.out.println("	╚═════╝░░░░╚═╝░░░╚═════╝░░░░╚═╝░░░╚══════╝╚═╝░░░░░╚═╝");
-		System.out.println();
+		System.out.println("\u001b[0m");
 		System.out.println();
 		System.out.println("-------------------------------------------------");
 		System.out.print("Enter name of library :->");
@@ -54,8 +54,13 @@ public class View {
 	}
 
 	public static void main(String[] args) {
+		final String red = "\u001b[31;1m";
+		final String white = "\u001b[37;1m";
+		final String green = "\u001b[32;1m";
+		final String reset = "\u001b[0m";
+		
 		do {
-			System.out.println();
+			System.out.println("\u001b[33m");
 			System.out.println("***Welcome to "+library.getLibraryName()+"***");
 			System.out.println("________________________________");
 			System.out.println("|				MENU			  ");
