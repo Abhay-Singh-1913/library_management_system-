@@ -12,7 +12,7 @@ This Library Management System efficiently maintains library records, reducing t
 Java, being an object-oriented language with features like platform independence, makes it an ideal choice for software development. Some key features of Java that contribute to its suitability for this project are simplicity, security, and its object-oriented nature.
 
 **Developer:**
-Name: Amit Chaurasiya
+Name: Abhay Singh
 
 ## MVC Architecture for Library Management System
 The Model-View-Controller (MVC) architecture is employed in this project to organize the code into three main components:
